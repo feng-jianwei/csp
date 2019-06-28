@@ -14,14 +14,7 @@ using namespace std;
 
 int n;
 map<int,int> m;
-int num;
-
-bool cmp(pii a,pii b){
-	if(a.second!=b.second){
-		return a.second>b.second;
-	}
-	return a.first<b.first;
-}
+int num,node;
 
 int main(){
 	cin>>n;
@@ -29,9 +22,14 @@ int main(){
 		cin>>num;
 		m[num]++;
 	}
-	vector<pii> ss(m.begin(),m.end());
-	sort(ss.begin(),ss.end(),cmp);
-	cout<<ss[0].first;
+	num=0;
+	for(auto x:m){
+		if(num<x.second){
+			num=x.second;
+			node = x.first;
+		}
+	}
+	cout<<node;
 	return 0;
 }
 
